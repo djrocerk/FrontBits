@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="cont">
+      <div class="card border-secondary mb-3" style="width: 600px">
+        <div class="card-header text-center">Cuenta</div>
+        <div class="card-body">
+          <form [formGroup]="formulario" (ngSubmit)="agregarMovimiento()">
+            <label class="form-label" for="fecha">fecha</label>
+            <input
+              formControlName="fecha"
+              type="date"
+              id="numero_cuenta"
+              class="form-control"
+              placeholder="fecha"
+            />
+
+            <!-- Nuevo campo de valor -->
+            <label class="form-label" for="valor">valor</label>
+            <input
+              formControlName="valor"
+              type="number"
+              id="valor"
+              class="form-control"
+              placeholder="valor"
+            />
+
+            <!-- Nuevo campo de numero cuenta -->
+            <label class="form-label" for="numero_cuenta"
+              >Número de cuenta</label
+            >
+            <select
+              formControlName="numero_cuenta"
+              id="numero_cuenta"
+              class="form-select"
+            >
+              <option
+                *ngFor="let cuenta of listarcuenta"
+                [value]="cuenta.numeroCuenta"
+              >
+                {{ cuenta.numeroCuenta }}
+              </option>
+            </select>
+
+            <!-- Nuevo campo de tipo cuenta -->
+
+            <label class="form-label" for="tipo_cuenta">Tipo de cuenta</label>
+            <select
+              id="tipo_cuenta"
+              formControlName="tipo_cuenta"
+              class="form-select form-select-lg mb-3"
+              aria-label="Large select example"
+            >
+              <option type="number" value="1" selected>Credito</option>
+              <option type="number" value="2">Debito</option>
+            </select>
+
+            <div class="row mt-2 text-center">
+              <div class="col-lg-6">
+                <button type="submit" class="btn btn-primary">Aceptar</button>
+              </div>
+              <div class="col-lg-6">
+                <button
+                  routerLink="/movimiento"
+                  type="button"
+                  class="btn btn-dark"
+                >
+                  Volver
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="error">
+   <h3> {{mensajeError}}</h3>
+</div>

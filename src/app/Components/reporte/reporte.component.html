@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="cont">
+      <div class="card border-secondary mb-3" style="width: 600px">
+        <div class="card-header text-center">Reporte</div>
+        <div class="card-body">
+          <!-- Aquí comienza el formulario -->
+          <form [formGroup]="formulario" (ngSubmit)="generarReporte()">
+            <div class="form-group">
+              <label for="fechaInicio">Fecha de inicio:</label>
+              <input
+                type="date"
+                formControlName="fechaInicio"
+                id="fechaInicio"
+                class="form-control"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="fechaFinal">Fecha final:</label>
+              <input
+                type="date"
+                formControlName="fechaFinal"
+                id="fechaFinal"
+                class="form-control"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="idCliente">Cliente</label>
+              <select
+                formControlName="idCliente"
+                id="idCliente"
+                class="form-select"
+                required
+              >
+                <option
+                  *ngFor="let cliente of listarcliente"
+                  [value]="cliente.idCliente"
+                >
+                  {{ cliente.nombre }}
+                </option>
+              </select>
+            </div>
+
+            <button style="margin: 5px 0" type="submit" class="btn btn-primary">
+              Enviar
+            </button>
+          </form>
+          <!-- Aquí termina el formulario -->
+
+          <!-- Aquí comienza la sección para mostrar el reporte -->
+          <div *ngIf="reporte">
+            <p>ID Cliente: {{ reporte.id_cliente }}</p>
+            <p>Total Crédito: {{ reporte.totalcredito }}</p>
+            <p>Total Débito: {{ reporte.totaldebito }}</p>
+
+            <!-- Tabla para mostrar las cuentas -->
+            <table class="table table-bordered">
+              <thead class="table-dark">
+                <tr>
+                  <th>ID</th>
+                  <th>Número de Cuenta</th>
+                  <th>Saldo</th>
+                  <th>Cliente</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let cuenta of reporte.cuentas">
+                  <td>{{ cuenta.id }}</td>
+                  <td>{{ cuenta.numeroCuenta }}</td>
+                  <td>{{ cuenta.saldo }}</td>
+                  <td>{{ cuenta.cliente.nombre }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- Fin de la tabla de cuentas -->
+          </div>
+          <!-- Aquí termina la sección para mostrar el reporte -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

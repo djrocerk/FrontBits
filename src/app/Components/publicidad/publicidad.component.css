@@ -1,0 +1,35 @@
+.background-container {
+    position: relative;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    margin: 10px;
+  }
+  
+  .content {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.8); /* Color de fondo para el contenido */
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .background-container::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, #ff7300, #e400ff, #ff0055); /* Colores del fondo animado */
+    animation: animateBackground 10s linear infinite; /* Duración y tipo de animación */
+  }
+  
+  @keyframes animateBackground {
+    0% {
+      transform: translate(-30%, -30%);
+    }
+    100% {
+      transform: translate(30%, 30%);
+    }
+  }

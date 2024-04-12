@@ -1,0 +1,36 @@
+<div class="container">
+    <h2>Tabla de Movimientos</h2>
+    <button style="margin:4px 0 ;" class="btn btn-primary" routerLink="/movimiento/agregar">Crear Movimiento</button>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th>ID Movimiento</th>
+            <th>fecha</th>
+            <th>valor</th>
+            <th>tipo movimiento</th>
+            <th>numero cuenta</th>
+            <th>saldo cuenta</th>
+            <th>cliente</th>
+            <th>#</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let movimiento of listarmovimiento">
+          <tr>
+            <td>{{ movimiento.id_movimineto }}</td>
+            <td>{{ movimiento.fecha }}</td>
+            <td>{{ movimiento.valor }}</td>
+            <td>{{ movimiento.tipoMovimiento.nombre }}</td>
+            <td>{{ movimiento.cuenta.numeroCuenta}}</td>
+            <td>{{ movimiento.cuenta.saldo}}</td>
+            <td>{{ movimiento.cuenta.cliente?.nombre}}</td>
+            <td style="text-align: center">
+              <button  (click)="eliminarMovimiento(movimiento.id_movimineto!)" class="btn btn-danger" style="margin: 3px;">Eliminar</button
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

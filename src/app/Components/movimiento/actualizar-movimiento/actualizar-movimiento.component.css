@@ -1,0 +1,9 @@
+.cont {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .error {
+    color: red;
+    text-align: center;
+  }

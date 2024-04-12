@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row mt-3">
+        <div class="cont">
+            <div class="card border-secondary mb-3" style="width: 600px;">
+                <div class="card-header text-center">Cliente</div>
+                <div class="card-body">
+                    <form [formGroup]="formulario" (ngSubmit)="agregarCliente()">
+                        <label class="form-label" for="nombre">Nombre</label>
+                        <input formControlName="nombre" type="text" id="nombre" class="form-control " placeholder="Ingrese nombre" />
+                        
+                        <!-- Nuevo campo de dirección -->
+                        <label class="form-label" for="direccion">Dirección</label>
+                        <input formControlName="direccion" type="text" id="direccion" class="form-control " placeholder="Ingrese dirección" />
+                        
+                        <!-- Nuevo campo de teléfono -->
+                        <label class="form-label" for="telefono">Teléfono</label>
+                        <input formControlName="telefono" type="tel" id="telefono" class="form-control " placeholder="Ingrese teléfono" />
+                        <div class="row mt-2 text-center">
+                            <div class="col-lg-6">
+                                <button type="submit" class="btn btn-primary ">Aceptar</button>
+                            </div>
+                            <div class="col-lg-6">
+                                <button routerLink="/cliente" type="button" class="btn btn-dark ">Volver</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
